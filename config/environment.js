@@ -29,6 +29,20 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV['simple-auth'] = {
+      authorizer: 'authorizer:token'
+    };
+    ENV['ember-simple-auth-token'] = {
+      serverTokenEndpoint: 'http://localhost:3000/api/v1/authentication/authenticate',
+      identificationField: 'email',
+      passwordField: 'password',
+      tokenPropertyName: 'auth_token',
+      refreshTokenPropertyName: 'refresh_token',
+      authorizationPrefix: 'Bearer ',
+      authorizationHeaderName: 'Authorization',
+      headers: {},
+    };
   }
 
   if (environment === 'test') {
